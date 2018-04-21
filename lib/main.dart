@@ -1,6 +1,80 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(new MyApp());
+void main() => runApp(new SudokuApp());
+
+class SudokuApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return new MaterialApp(
+      title: 'Flutter Demo',
+      theme: new ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: new SudokuHome(title: 'Flutter Sudoku Home Page'),
+    );
+  }
+}
+
+class SudokuHome extends StatefulWidget {
+  SudokuHome({Key key, this.title}) : super(key: key);
+  final String title;
+
+  @override
+  _SudokuState createState() => new _SudokuState();
+}
+
+class _SudokuState extends State<SudokuHome> {
+  int _counter = 0;
+  //TODO ADD MODEL
+
+
+  void _incrementCounter() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  List<TableRow> getTableRowLst() {
+    List<TableRow> lst = new List<TableRow>();
+    for (int i = 0; i < 9; i++) {
+      lst.add(getTableRow());
+    }
+    return lst;
+  }
+
+  TableRow getTableRow() {
+    List<Widget> lst = new List<Widget>();
+    for (int i = 0; i < 9; i++) {
+      lst.add(new Text('4')); //TODO EXTRACT VALUE FROM MODEL
+    }
+    return new TableRow(children: lst);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(widget.title),
+      ),
+      body: Center(
+        child: new Table(
+          children: getTableRowLst(),
+          border: new TableBorder.all(
+              color: Colors.blueAccent
+          ),
+        ),
+      ),
+      floatingActionButton: new FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: new Icon(Icons.local_florist),
+      ),
+    );
+  }
+}
+
+//DEMO below
+//void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
