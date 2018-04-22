@@ -45,7 +45,11 @@ class _SudokuState extends State<SudokuHome> {
   TableRow getTableRow() {
     List<Widget> lst = new List<Widget>();
     for (int i = 0; i < 9; i++) {
-      lst.add(new Text('4')); //TODO EXTRACT VALUE FROM MODEL
+      lst.add(new TextField(
+        textAlign: TextAlign.center,
+        keyboardType: new TextInputType.numberWithOptions(),
+        //TODO add TextEditingController (onChanged prob not enough)
+      ));
     }
     return new TableRow(children: lst);
   }
