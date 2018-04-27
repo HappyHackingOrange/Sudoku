@@ -47,6 +47,10 @@ class HomePageState extends State<MyHomePage> {
   static int count = 0;
   static int cursor = 0;
 
+  static void changeCount(i){
+    count = i;
+  }
+
   static void incCount(){
     if (count != 9){
       count++;
@@ -57,7 +61,6 @@ class HomePageState extends State<MyHomePage> {
   }
 
   static String getNewCat() {
-    incCount();
     return 'set2/'+ count.toString() + '.png';
   }
 
@@ -90,21 +93,20 @@ class HomePageState extends State<MyHomePage> {
 
   List<TableRow> getKeyRowlst() {
     List<TableRow> lst = new List<TableRow>();
-    lst.add(getTableRow());
+    lst.add(getKeyRow());
     return lst;
   }
+  static List<int> keyValues = [1,2,3,4,5,6,7,8,9];
 
   TableRow getKeyRow() {
     List<Widget> lst = new List<Widget>();
     for (int i = 1; i <= 9; i++) {
       lst.add(new IconButton(
-        icon: Image.asset(
-            'set2/'+ i.toString() + '.png'
-        ),
+        icon: Image.asset('set2/'+i.toString()+'.png'),
         iconSize: 24.0,
         onPressed: () {
           setState(() {
-            cursor = i;
+            changeCount(i);
           });
         },
       ),
@@ -128,7 +130,7 @@ class HomePageState extends State<MyHomePage> {
             ),
           ),
           new Padding(
-            padding: new EdgeInsets.only(top:.0),
+            padding: new EdgeInsets.only(top:40.0),
             child: new Table(
               children: getKeyRowlst(),
               border: new TableBorder.all(
