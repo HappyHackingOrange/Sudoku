@@ -43,46 +43,64 @@ class MyHomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<MyHomePage> {
-  String img = getNewCat();
+  String img = getNewCat(0);
+  List<String> imgList = [
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','','',
+    '','','','','','','','',''
+  ];
   static int count = 0;
   static int cursor = 0;
 
+  static void changeCursor(i){
+    cursor = i;
+  }
+
   static void changeCount(i){
-    count = i;
+    countList[i] = cursor;
   }
 
-  static void incCount(){
-    if (count != 9){
-      count++;
-    }
-    else {
-      count = 1;
-    }
-  }
+//  static void incCount(){
+//    if (count != 9){
+//      count++;
+//    }
+//    else {
+//      count = 1;
+//    }
+//  }
 
-  static String getNewCat() {
-    return 'set2/'+ count.toString() + '.png';
+  static List<int> countList = [1,2,3,4,5,6,7,8,9];
+
+  static String getNewCat(i) {
+    return 'set2/'+ countList[i].toString() + '.png';
   }
 
   List<TableRow> getTableRowLst() {
     List<TableRow> lst = new List<TableRow>();
     for (int i = 0; i < 9; i++) {
-      lst.add(getTableRow());
+      lst.add(getTableRow(i*9));
     }
     return lst;
   }
 
-  TableRow getTableRow() {
+  TableRow getTableRow(r) {
     List<Widget> lst = new List<Widget>();
     for (int i = 0; i < 9; i++) {
       lst.add(new IconButton(
         icon: Image.asset(
-          img,
+          imgList[i + r],
         ),
         iconSize: 24.0,
         onPressed: () {
           setState(() {
-            img = getNewCat();
+            changeCount(i);
+            imgList[i+r] = getNewCat(i);
           });
         },
       ),
@@ -93,20 +111,20 @@ class HomePageState extends State<MyHomePage> {
 
   List<TableRow> getKeyRowlst() {
     List<TableRow> lst = new List<TableRow>();
-    lst.add(getKeyRow());
+    lst.add(getKeyRow(0));
+    lst.add(getKeyRow(5));
     return lst;
   }
-  static List<int> keyValues = [1,2,3,4,5,6,7,8,9];
 
-  TableRow getKeyRow() {
+  TableRow getKeyRow(int c) {
     List<Widget> lst = new List<Widget>();
-    for (int i = 1; i <= 9; i++) {
+    for (int i = 0; i <= 4; i++) {
       lst.add(new IconButton(
-        icon: Image.asset('set2/'+i.toString()+'.png'),
-        iconSize: 24.0,
+        icon: Image.asset('set2/'+(i + c).toString()+'.png'),
+        iconSize: 35.0,
         onPressed: () {
           setState(() {
-            changeCount(i);
+            changeCursor(i + c);
           });
         },
       ),
