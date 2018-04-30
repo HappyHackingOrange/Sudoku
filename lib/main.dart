@@ -43,42 +43,25 @@ class MyHomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<MyHomePage> {
-  String img = getNewCat(0);
-  List<String> imgList = [
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','','',
-    '','','','','','','','',''
+  static String toImg(int s){
+    return 'set2/' + s.toString() + '.png';
+  }
+  List<int> imgList = [
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0,
+    0,0,0,0,0,0,0,0,0
   ];
   static int count = 0;
   static int cursor = 0;
 
   static void changeCursor(i){
     cursor = i;
-  }
-
-  static void changeCount(i){
-    countList[i] = cursor;
-  }
-
-//  static void incCount(){
-//    if (count != 9){
-//      count++;
-//    }
-//    else {
-//      count = 1;
-//    }
-//  }
-
-  static List<int> countList = [1,2,3,4,5,6,7,8,9];
-
-  static String getNewCat(i) {
-    return 'set2/'+ countList[i].toString() + '.png';
   }
 
   List<TableRow> getTableRowLst() {
@@ -94,13 +77,12 @@ class HomePageState extends State<MyHomePage> {
     for (int i = 0; i < 9; i++) {
       lst.add(new IconButton(
         icon: Image.asset(
-          imgList[i + r],
+          toImg(imgList[i+r]),
         ),
         iconSize: 24.0,
         onPressed: () {
           setState(() {
-            changeCount(i);
-            imgList[i+r] = getNewCat(i);
+            imgList[i+r] = cursor;
           });
         },
       ),
