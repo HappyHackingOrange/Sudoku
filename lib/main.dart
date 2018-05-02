@@ -1,4 +1,6 @@
+import 'dart:collection';
 import 'package:flutter/material.dart';
+import 'package:sudoku/Board.dart';
 
 void main() => runApp(new MyApp());
 
@@ -44,6 +46,11 @@ class HomePageState extends State<MyHomePage> {
   ];
   static int count = 0;
   static int cursor = 0;
+  HashSet<RowCol> conflicts = new HashSet<RowCol>();
+
+  void changeConflicts() {
+    conflicts = Conflict.getConflicts(imgList);
+  }
 
   static void changeCursor(i){
     cursor = i;
@@ -65,16 +72,22 @@ class HomePageState extends State<MyHomePage> {
   TableRow getTableRow(r) {
     List<Widget> lst = new List<Widget>();
     for (int c = 0; c < 9; c++) {
-      lst.add(new IconButton(
-        icon: Image.asset(
-          toImg(imgList[r][c]),
+      Color containerColor = Colors.white;
+      if (conflicts.contains(new RowCol(r, c))) containerColor = Colors.redAccent;
+      lst.add(new Container(
+        color: containerColor,
+        child: new IconButton(
+          icon: Image.asset(
+            toImg(imgList[r][c]),
+          ),
+          iconSize: 24.0,
+          onPressed: () {
+            setState(() {
+              imgList[r][c] = cursor;
+              changeConflicts();
+            });
+          },
         ),
-        iconSize: 24.0,
-        onPressed: () {
-          setState(() {
-            imgList[r][c] = cursor;
-          });
-        },
       ),
       );
     }
