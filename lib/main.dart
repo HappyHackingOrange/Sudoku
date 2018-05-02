@@ -91,14 +91,19 @@ class HomePageState extends State<MyHomePage> {
   TableRow getKeyRow(int c) {
     List<Widget> lst = new List<Widget>();
     for (int i = 0; i <= 4; i++) {
-      lst.add(new IconButton(
-        icon: Image.asset('set2/'+(i + c).toString()+'.png'),
-        iconSize: 35.0,
-        onPressed: () {
-          setState(() {
-            changeCursor(i + c);
-          });
-        },
+      Color containerColor = Colors.white;
+      if (cursor == i+c) containerColor = Colors.lightGreenAccent;
+      lst.add(new Container(
+        color: containerColor,
+        child: new IconButton(
+          icon: Image.asset('set2/'+(i + c).toString()+'.png'),
+          iconSize: 35.0,
+          onPressed: () {
+            setState(() {
+              changeCursor(i + c);
+            });
+          },
+        ),
       ),
       );
     }
