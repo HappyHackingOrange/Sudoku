@@ -25,7 +25,6 @@ class SudokuHome extends StatefulWidget {
 
 class _SudokuState extends State<SudokuHome> {
   int _counter = 0;
-  //TODO ADD MODEL
 
   List<TableRow> getTableRowLst() {
     List<TableRow> lst = new List<TableRow>();
