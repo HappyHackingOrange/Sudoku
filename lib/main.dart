@@ -31,16 +31,16 @@ class HomePageState extends State<MyHomePage> {
   static String toImg(int s){
     return 'set2/' + s.toString() + '.png';
   }
-  List<int> imgList = [
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0,
-    0,0,0,0,0,0,0,0,0
+  List<List<int>> imgList = [
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0],
   ];
   static int count = 0;
   static int cursor = 0;
@@ -56,23 +56,23 @@ class HomePageState extends State<MyHomePage> {
 
   List<TableRow> getTableRowLst() {
     List<TableRow> lst = new List<TableRow>();
-    for (int i = 0; i < 9; i++) {
-      lst.add(getTableRow(i*9));
+    for (int r = 0; r < 9; r++) {
+      lst.add(getTableRow(r));
     }
     return lst;
   }
 
   TableRow getTableRow(r) {
     List<Widget> lst = new List<Widget>();
-    for (int i = 0; i < 9; i++) {
+    for (int c = 0; c < 9; c++) {
       lst.add(new IconButton(
         icon: Image.asset(
-          toImg(imgList[i+r]),
+          toImg(imgList[r][c]),
         ),
         iconSize: 24.0,
         onPressed: () {
           setState(() {
-            imgList[i+r] = cursor;
+            imgList[r][c] = cursor;
           });
         },
       ),
