@@ -33,17 +33,32 @@ class HomePageState extends State<MyHomePage> {
   static String toImg(int s){
     return 'set2/' + s.toString() + '.png';
   }
+
+
   List<List<int>> imgList = [
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
-    [0,0,0,0,0,0,0,0,0],
+    [0,0,0,2,6,0,7,0,1],
+    [6,8,0,0,7,0,0,9,0],
+    [1,9,0,0,0,4,5,0,0],
+    [8,2,0,1,0,0,0,4,0],
+    [0,0,4,6,0,2,9,0,0],
+    [0,5,0,0,0,3,0,2,8],
+    [0,0,9,3,0,0,0,7,4],
+    [0,4,0,0,5,0,0,3,6],
+    [7,0,3,0,1,8,0,0,0],
   ];
+
+  List<List<int>> imgList2 = [
+    [0,0,0,2,6,0,7,0,1],
+    [6,8,0,0,7,0,0,9,0],
+    [1,9,0,0,0,4,5,0,0],
+    [8,2,0,1,0,0,0,4,0],
+    [0,0,4,6,0,2,9,0,0],
+    [0,5,0,0,0,3,0,2,8],
+    [0,0,9,3,0,0,0,7,4],
+    [0,4,0,0,5,0,0,3,6],
+    [7,0,3,0,1,8,0,0,0],
+  ];
+
   static int count = 0;
   static int cursor = 0;
   HashSet<RowCol> conflicts = new HashSet<RowCol>();
@@ -74,22 +89,44 @@ class HomePageState extends State<MyHomePage> {
     for (int c = 0; c < 9; c++) {
       Color containerColor = Colors.white;
       if (conflicts.contains(new RowCol(r, c))) containerColor = Colors.redAccent;
-      lst.add(new Container(
-        color: containerColor,
-        child: new IconButton(
-          icon: Image.asset(
-            toImg(imgList[r][c]),
+      if (imgList[r][c] == 0) {
+        lst.add(new Container(
+          color: containerColor,
+          child: new IconButton(
+            icon: Image.asset(
+              toImg(imgList[r][c]),
+            ),
+            iconSize: 24.0,
+            onPressed: () {
+              setState(() {
+                imgList[r][c] = cursor;
+                changeConflicts();
+              });
+            },
           ),
-          iconSize: 24.0,
-          onPressed: () {
-            setState(() {
-              imgList[r][c] = cursor;
-              changeConflicts();
-            });
-          },
         ),
-      ),
-      );
+        );
+      }
+      else {
+        lst.add(new Container(
+          color: containerColor,
+          child: new IconButton(
+            icon: Image.asset(
+              toImg(imgList[r][c]),
+            ),
+            iconSize: 24.0,
+            onPressed: (){
+              if(imgList2[r][c] == 0) {
+                setState(() {
+                imgList[r][c] = cursor;
+                changeConflicts();
+              });}
+              else{
+              }
+            }
+          ),
+        )
+        );}
     }
     return new TableRow(children: lst);
   }
