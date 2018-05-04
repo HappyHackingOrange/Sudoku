@@ -76,6 +76,15 @@ class HomePageState extends State<MyHomePage> {
 
   }
 
+  Color getHighlightColor(int r, int c) {
+    bool isConflict = conflicts.contains(new RowCol(r, c));
+    bool isChangable = initList[r][c] == 0;
+    if (isConflict && !isChangable) return Colors.red[900];
+    else if (isConflict)            return Colors.red[100];
+    else if (!isChangable)          return Colors.grey;
+    else                            return Colors.white;
+  }
+
   List<TableRow> getTableRowLst() {
     List<TableRow> lst = new List<TableRow>();
     for (int r = 0; r < 9; r++) {
@@ -87,10 +96,8 @@ class HomePageState extends State<MyHomePage> {
   TableRow getTableRow(r) {
     List<Widget> lst = new List<Widget>();
     for (int c = 0; c < 9; c++) {
-      Color containerColor = Colors.white;
-      if (conflicts.contains(new RowCol(r, c))) containerColor = Colors.redAccent;
       lst.add(new Container(
-        color: containerColor,
+        color: getHighlightColor(r, c),
         child: new IconButton(
           icon: Image.asset(
             toImg(imgList[r][c]),
