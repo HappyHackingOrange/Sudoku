@@ -72,8 +72,11 @@ class HomePageState extends State<MyHomePage> {
   }
 
   // Resets the whole board.
-  static void reset() {
-
+  void reset() {
+    setState(() {
+      imgList = new List<List<int>>.generate(9, (i) => new List<int>.from(initList[i]));
+      changeConflicts();
+    });
   }
 
   Color getHighlightColor(int r, int c) {
@@ -159,6 +162,7 @@ class HomePageState extends State<MyHomePage> {
               new ListTile(
                 title: new Text('Reset'),
                 onTap: () {
+                  reset();
                   Navigator.pop(context);
                 },
               ),
