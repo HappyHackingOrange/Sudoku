@@ -278,6 +278,32 @@
           <!-- .end .wrap -->
         </section>
 
+        <section>
+          <!--.wrap = container (width: 90%) -->
+          <div class="wrap">
+            <div class="grid vertical-align">
+              <div class="column">
+                <h3><strong>Operator Overriding</strong></h3>
+                <p class="text-intro">Override operators of a Class (e.g. ==).</p>
+                <p> HashSet uses the == operator to search for elements instead of the .equals method</p>
+                <p> Override the == operator to use a HashSet with a custom Class </p>
+              </div>
+              <!-- .end .column -->
+              <div class="column">
+                <pre>
+@override
+bool operator ==(other) {
+  return (this.r == other.r) && (this.c == other.c);
+}
+                </pre>
+              </div>
+              <!-- .end .column -->
+            </div>
+            <!-- .end .grid -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+
         <section class="slide-bottom">
           <div class="wrap">
             <div class="content-right text-serif">
