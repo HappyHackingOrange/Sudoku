@@ -354,6 +354,43 @@ bool operator ==(other) {
           <!-- .end .wrap -->
         </section>
 
+        <section>
+          <!--.wrap = container (width: 90%) -->
+          <div class="wrap">
+            <div class="grid vertical-align">
+              <div class="column">
+                <h3><strong>Optional named parameters and default parameter values</strong></h3>
+                <p>To declare a function/constructor with optional named parameters, use <code>{param1, param2, ...}</code></p>
+                <p>To call a function/constructor with optional named parameters, use <code>paramName: value</code></p>
+                <p>To declare a function/constructor with default parameter values use <code>:</code> or <code>=</code></p>
+                <p>Widgets are easily customizable and easily used with few lines of code.
+                  Container constructor consists of 12 optional named parameters.
+                  To call the constructor, only write code for parameters you need customized and the rest of the parameters have default values.</p>
+              </div>
+              <!-- .end .column -->
+              <div class="column">
+                <pre>
+<span class="code-comment">//Declaration of named constructor</span>
+TableBorder.all({
+  Color color: const Color(0xFF000000),
+  double width: 1.0,
+  BorderStyle style: BorderStyle.solid
+})
+
+<span class="code-comment">//Call</span>
+new TableBorder.all(
+  color: Colors.blueAccent
+)
+<span class="code-comment">//color is Colors.blueAccent, width is 1.0, style is BorderStyle.solid</span>
+                </pre>
+              </div>
+              <!-- .end .column -->
+            </div>
+            <!-- .end .grid -->
+          </div>
+          <!-- .end .wrap -->
+        </section>
+
         <section class="slide-bottom">
           <div class="wrap">
             <div class="content-right text-serif">
