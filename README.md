@@ -13,4 +13,5 @@ For help getting started with Flutter, view our online
 
 To install our app for Android devices:
 - Download the Nyandoku.apk file on your device and install
-- Download the Nyandoku.apk file on your local machine, and run 'adb install <path to Nyandoku.apk>'
+- Download the Nyandoku.apk file on your local machine, and run
+      adb install 'path to Nyandoku.apk'
