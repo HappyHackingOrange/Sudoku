@@ -549,7 +549,46 @@ person.age; // => undefined
           </div>
           <!-- .end .wrap -->
         </section>
+		<section>
+				  <!--.wrap = container (width: 90%) -->
+				  <span class="background" style="background-color:#99ccff"></span>
+				  <div class="wrap">
+					<div class="grid vertical-align">
+					  <div class="column">
+						<h3><strong>Future and Async</strong></h3>
+						<p>Even though Dart is single threaded, it could run the rest of the code without waiting for functions that do a lot of work</p>
+						<p>Dart uses an asynchronous model, and you can return values of functions that do a lot of work using a Future without having it finish.</p>
+						<p>Future is basically a place holder. It queues up the work of the function and then returns an uncompleted Future object.</p>
+						<p>When the function is done doing its job, the Future object then becomes complete with the returned value.</p>
+						<p>To get the value that Future represents, we use async or await.</p>
+					  </div>
+					  <!-- .end .column -->
+					  <div class="column">
+					    <pre>
+					<b>printDailyNewsDigest()</b> async {
+String news = await gatherNewsReports();print(news);
+}
 
+<b>main()</b> {
+printDailyNewsDigest();
+printWinningLotteryNumbers();
+printWeatherForecast();
+printBaseballScore();
+}
+<br>
+<b>Console Output:</b>
+Winning lotto numbers: [23, 63, 87, 26, 2]
+Tomorrow's forecast: 70F, sunny.
+Baseball score: Red Sox 10, Yankees 0
+gathered news goes here
+                </pre>
+					  </div>
+					  <!-- .end .column -->
+					</div>
+					<!-- .end .grid -->
+				  </div>
+				  <!-- .end .wrap -->
+				</section>
         <section>
           <!--.wrap = container (width: 90%) -->
           <span class="background" style="background-color:#99ccff"></span>
