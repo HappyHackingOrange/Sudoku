@@ -334,7 +334,7 @@
           <!--.wrap = container (width: 90%) -->
           <span class="background" style="background-color:#99ccff"></span>
           <div class="wrap size-50 aligncenter">
-            <h2><strong>Angular Dart</strong></h2>
+            <h2><strong>Other Dart Framework: Angular Dart</strong></h2>
             <div class="bg-white shadow">
               <ul class="flexblock reasons">
                 <li>
@@ -358,7 +358,7 @@
           <!--.wrap = container (width: 90%) -->
           <span class="background" style="background-color:#99ccff"></span>
           <div class="wrap size-50 aligncenter">
-            <h2><strong>Widgets</strong></h2>
+            <h2><strong>Flutter is about Widgets.</strong></h2>
             <div class="bg-white shadow">
               <ul class="flexblock reasons">
                 <li>
