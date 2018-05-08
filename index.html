@@ -291,17 +291,6 @@
                     <svg class="fa-clock-o">
                       <use xlink:href="#fa-clock-o"></use>
                     </svg>
-                    Predictable, high performance.
-                  </h2>
-                  To create fast, fluid experiences, we need a language that both delivers high performance and delivers predictable performance, without periodic pauses that would cause dropped frames.
-                </div>
-              </li>
-              <li>
-                <div>
-                  <h2>
-                    <svg class="fa-clock-o">
-                      <use xlink:href="#fa-clock-o"></use>
-                    </svg>
                     Fast allocation
                   </h2>
                   functional-style flow that depends heavily on the underlying memory allocator efficiently handling small, short-lived allocations.
@@ -324,6 +313,15 @@
                   </h2>
                   Many web apps are written in JavaScript because it is supported by a variety of web browsers. Dart is also meant for the web.
                   However for most environments that do not support Dart, it can be easily compiled to JavaScript.
+                  </div>
+              </li>
+              <li>
+                <div>
+                  <h2>
+                    <span>&rarr;</span>
+                    Errors
+                  </h2>
+                  Dart is designed to be able to tackle problems and catch errors easier.  This is why Dart has async/await, generators, string interpolation, earlier error detection and much more.
                   </div>
               </li>
             </ul>
@@ -419,6 +417,13 @@
 @override
 bool operator ==(other) {
   return (this.r == other.r) && (this.c == other.c);
+}
+                </pre>
+              </div>
+              <div class="column">
+                <pre>
+Cat operator +(Cat other) {
+  return new Kitten(dna + other.dna);
 }
                 </pre>
               </div>
